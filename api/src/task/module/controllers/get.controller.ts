@@ -2,7 +2,7 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { TaskFinder } from '../../application/TaskFinder';
 import { Task } from '../../domain/Task';
 import { QueryTaskDto } from '../dtos/QueryTaskDto';
-import { Sqlite3FindTaskRepository } from '../persistence/Sqlite3FindTaskRepository';
+import { Sqlite3FindTaskRepository } from '../../infrastructure/persistence/Sqlite3FindTaskRepository';
 
 @Controller('task')
 export class TaskGetController {
