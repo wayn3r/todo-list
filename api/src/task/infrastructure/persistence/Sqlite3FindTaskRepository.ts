@@ -1,3 +1,4 @@
+import { TaskId } from './../../domain/TaskId';
 import { Sqlite3Database } from '../../../shared/infrastructure/Sqlite3Database';
 import { TaskDescription } from '../../../task/domain/TaskDescription';
 import { TaskPriority } from '../../../task/domain/TaskPriority';
@@ -27,7 +28,7 @@ export class Sqlite3FindTaskRepository
           new TaskStatus(status),
           new TaskDescription(description),
           new TaskPriority(priority),
-          id,
+          new TaskId(id),
         ),
     );
   }

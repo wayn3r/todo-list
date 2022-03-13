@@ -4,6 +4,7 @@ import { TaskStatus } from './../domain/TaskStatus';
 import { TaskTitle } from './../domain/TaskTitle';
 import { CreateTaskRepository } from '../domain/CreateTaskRepository';
 import { Task } from '../domain/Task';
+import { TaskId } from '../domain/TaskId';
 
 interface TaskParams {
   title: string;
@@ -26,6 +27,7 @@ export class TaskCreator {
       new TaskStatus(status),
       new TaskDescription(description),
       new TaskPriority(priority),
+      new TaskId(),
     );
     const savedTask = await this.repository.save(task);
     return savedTask;

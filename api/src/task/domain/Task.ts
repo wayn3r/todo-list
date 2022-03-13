@@ -1,4 +1,5 @@
 import { TaskDescription } from './TaskDescription';
+import { TaskId } from './TaskId';
 import { TaskPriority } from './TaskPriority';
 import { TaskStatus } from './TaskStatus';
 import { TaskTitle } from './TaskTitle';
@@ -9,6 +10,6 @@ export class Task {
     readonly status: TaskStatus,
     readonly description: TaskDescription,
     readonly priority: TaskPriority,
-    readonly id?: number,
+    readonly id: TaskId,
   ) {}
 }
