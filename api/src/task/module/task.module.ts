@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { TaskGetController } from './controllers/get.controller';
 import { TaskPostController } from './controllers/post.controller';
+import { TaskGetMiddleware } from './middlewares/get.middleware';
 import { TaskPostMiddleware } from './middlewares/post.middleware';
 import { CreateTaskService } from './services/CreateTaskService';
 import { ListTasksService } from './services/ListTasksService';
@@ -15,6 +16,10 @@ export class TaskModule {
     consumer.apply(TaskPostMiddleware).forRoutes({
       path: 'task',
       method: RequestMethod.POST,
+    });
+    consumer.apply(TaskGetMiddleware).forRoutes({
+      path: 'task',
+      method: RequestMethod.GET,
     });
   }
 }
