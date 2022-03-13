@@ -1,4 +1,4 @@
-import { StringValueObject } from 'src/shared/domain/StringValueObject';
+import { StringValueObject } from '../../shared/domain/StringValueObject';
 
 export class TaskPriority extends StringValueObject {
   public static readonly VALID_PRIORITIES = ['low', 'medium', 'high'];

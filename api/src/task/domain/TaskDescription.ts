@@ -1,4 +1,4 @@
-import { StringValueObject } from 'src/shared/domain/StringValueObject';
+import { StringValueObject } from '../../shared/domain/StringValueObject';
 
 export class TaskDescription extends StringValueObject {
   public constructor(readonly value: string = null) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { TaskFinder } from 'src/task/application/TaskFinder';
-import { Task } from 'src/task/domain/Task';
-import { Sqlite3FindTaskRepository } from 'src/task/infrastructure/persistence/Sqlite3FindTaskRepository';
+import { TaskFinder } from '../../application/TaskFinder';
+import { Task } from '../../domain/Task';
+import { Sqlite3FindTaskRepository } from '../../infrastructure/persistence/Sqlite3FindTaskRepository';
 import { QueryTaskDto } from '../dtos/QueryTaskDto';
 
 @Injectable()

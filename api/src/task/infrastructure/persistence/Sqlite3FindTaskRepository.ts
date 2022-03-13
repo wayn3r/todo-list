@@ -1,8 +1,8 @@
-import { Sqlite3Database } from 'src/shared/infrastructure/Sqlite3Database';
-import { TaskDescription } from 'src/task/domain/TaskDescription';
-import { TaskPriority } from 'src/task/domain/TaskPriority';
-import { TaskStatus } from 'src/task/domain/TaskStatus';
-import { TaskTitle } from 'src/task/domain/TaskTitle';
+import { Sqlite3Database } from '../../../shared/infrastructure/Sqlite3Database';
+import { TaskDescription } from '../../../task/domain/TaskDescription';
+import { TaskPriority } from '../../../task/domain/TaskPriority';
+import { TaskStatus } from '../../../task/domain/TaskStatus';
+import { TaskTitle } from '../../../task/domain/TaskTitle';
 import { FindTaskRepository } from '../../domain/FindTaskRepository';
 import { Task } from '../../domain/Task';
 

@@ -1,9 +1,9 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { NextFunction, Response, Request } from 'express';
-import { TaskDescription } from 'src/task/domain/TaskDescription';
-import { TaskPriority } from 'src/task/domain/TaskPriority';
-import { TaskStatus } from 'src/task/domain/TaskStatus';
-import { TaskTitle } from 'src/task/domain/TaskTitle';
+import { TaskDescription } from '../../domain/TaskDescription';
+import { TaskPriority } from '../../domain/TaskPriority';
+import { TaskStatus } from '../../domain/TaskStatus';
+import { TaskTitle } from '../../domain/TaskTitle';
 
 @Injectable()
 export class TaskPostMiddleware implements NestMiddleware {
