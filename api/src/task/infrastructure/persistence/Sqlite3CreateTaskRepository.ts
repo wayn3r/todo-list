@@ -9,7 +9,7 @@ export class Sqlite3CreateTaskRepository
   extends Sqlite3Database
   implements CreateTaskRepository
 {
-  public async save(task: Task): Promise<Task> {
+  public async save(task: Task): Promise<TaskId> {
     const result = await this.query(
       'INSERT INTO tasks(title, description, priority, status) VALUES(?, ?, ?, ?)',
       [
@@ -19,12 +19,6 @@ export class Sqlite3CreateTaskRepository
         task.status.value,
       ],
     );
-    return new Task(
-      task.title,
-      task.status,
-      task.description,
-      task.priority,
-      new TaskId(result.lastId),
-    );
+    return new TaskId(result.lastId);
   }
 }

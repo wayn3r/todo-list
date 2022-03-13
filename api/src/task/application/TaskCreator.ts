@@ -23,13 +23,19 @@ export class TaskCreator {
     priority,
   }: TaskParams): Promise<Task> {
     const task = new Task(
+      new TaskId(),
       new TaskTitle(title),
-      new TaskStatus(status),
       new TaskDescription(description),
       new TaskPriority(priority),
-      new TaskId(),
+      new TaskStatus(status),
     );
-    const savedTask = await this.repository.save(task);
-    return savedTask;
+    const id = await this.repository.save(task);
+    return new Task(
+      id,
+      task.title,
+      task.description,
+      task.priority,
+      task.status,
+    );
   }
 }

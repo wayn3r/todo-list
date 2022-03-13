@@ -24,11 +24,11 @@ export class Sqlite3FindTaskRepository
     return tasks.map(
       ({ title, status, description, priority, id }) =>
         new Task(
+          new TaskId(id),
           new TaskTitle(title),
-          new TaskStatus(status),
           new TaskDescription(description),
           new TaskPriority(priority),
-          new TaskId(id),
+          new TaskStatus(status),
         ),
     );
   }

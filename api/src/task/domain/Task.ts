@@ -6,10 +6,10 @@ import { TaskTitle } from './TaskTitle';
 
 export class Task {
   public constructor(
+    readonly id: TaskId,
     readonly title: TaskTitle,
-    readonly status: TaskStatus,
     readonly description: TaskDescription,
     readonly priority: TaskPriority,
-    readonly id: TaskId,
+    readonly status: TaskStatus,
   ) {}
 }
