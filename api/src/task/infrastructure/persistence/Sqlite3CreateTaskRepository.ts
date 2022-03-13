@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TaskId } from 'src/task/domain/TaskId';
+import { TaskId } from '../../domain/TaskId';
 import { Sqlite3Database } from '../../../shared/infrastructure/Sqlite3Database';
 import { CreateTaskRepository } from '../../domain/CreateTaskRepository';
 import { Task } from '../../domain/Task';
