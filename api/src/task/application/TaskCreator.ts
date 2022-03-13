@@ -13,16 +13,21 @@ interface TaskParams {
 }
 
 export class TaskCreator {
-  public constructor(private reporsitory: CreateTaskRepository) {}
+  public constructor(private repository: CreateTaskRepository) {}
 
-  public create({ title, status, description, priority }: TaskParams): Task {
+  public async create({
+    title,
+    status,
+    description,
+    priority,
+  }: TaskParams): Promise<Task> {
     const task = new Task(
       new TaskTitle(title),
       new TaskStatus(status),
       new TaskDescription(description),
       new TaskPriority(priority),
     );
-    this.reporsitory.save(task);
-    return task;
+    const savedTask = await this.repository.save(task);
+    return savedTask;
   }
 }

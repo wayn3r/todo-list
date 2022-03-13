@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Sqlite3Database } from 'src/shared/infrastructure/Sqlite3Database';
+import { Sqlite3Database } from '../../../shared/infrastructure/Sqlite3Database';
 import { CreateTaskRepository } from '../../domain/CreateTaskRepository';
 import { Task } from '../../domain/Task';
 
@@ -8,8 +8,8 @@ export class Sqlite3CreateTaskRepository
   extends Sqlite3Database
   implements CreateTaskRepository
 {
-  public save(task: Task): void {
-    this.query(
+  public async save(task: Task): Promise<Task> {
+    const result = await this.query(
       'INSERT INTO tasks(title, description, priority, status) VALUES(?, ?, ?, ?)',
       [
         task.title.value,
@@ -18,6 +18,12 @@ export class Sqlite3CreateTaskRepository
         task.status.value,
       ],
     );
-    return;
+    return new Task(
+      task.title,
+      task.status,
+      task.description,
+      task.priority,
+      result.lastId,
+    );
   }
 }

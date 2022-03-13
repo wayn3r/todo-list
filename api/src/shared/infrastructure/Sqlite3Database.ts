@@ -21,13 +21,29 @@ export class Sqlite3Database {
       );
     });
   }
-  public query(sql: string, params: string[] = []) {
-    const statement = Sqlite3Database.db.prepare(sql);
-    statement.run(params);
-    statement.finalize((err: Error) => {
-      if (err) {
-        throw err;
-      }
+  public query(
+    sql: string,
+    params: string[] = [],
+  ): Promise<{
+    changes: number;
+    lastId: number;
+  }> {
+    return new Promise((resolve, reject) => {
+      const statement = Sqlite3Database.db.prepare(sql);
+      statement.run(params, function (err: Error) {
+        if (err) {
+          reject(err);
+        }
+        statement.finalize((err: Error) => {
+          if (err) {
+            reject(err);
+          }
+        });
+        resolve({
+          changes: this.changes,
+          lastId: this.lastID,
+        });
+      });
     });
   }
   public list(tableName: string, where?: any): Promise<any[] | Error> {

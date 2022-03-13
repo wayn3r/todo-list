@@ -6,9 +6,14 @@ import { CreateTaskService } from '../services/CreateTaskService';
 export class TaskPostController {
   public constructor(private service: CreateTaskService) {}
   @Post()
-  public createTask(@Body() body: CreateTaskDto) {
+  public async createTask(@Body() body: CreateTaskDto) {
     const { title, status, priority, description } = body;
-    const task = this.service.handle({ title, status, priority, description });
+    const task = await this.service.handle({
+      title,
+      status,
+      priority,
+      description,
+    });
     return task;
   }
 }
