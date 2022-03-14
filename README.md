@@ -23,3 +23,8 @@ Now, with the frontend built
 That last commad will build and start the app.
 
 Once finished you will be able to see the app running at `http://localhost:3000`
+
+### Optional parts completed
+
+-   Filter or search by terms within the existing tasks.
+-   Sort by criteria such as priority and title
