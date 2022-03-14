@@ -1,0 +1,35 @@
+.task-list {
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+  &__sort-by {
+    display: grid;
+    grid-template-columns: 1fr 0.25fr 0.25fr;
+    justify-content: space-between;
+    justify-items: start;
+    button {
+      background-color: transparent;
+      border: none;
+      color: var(--terciary);
+      padding: 1rem 0;
+      font-size: 1.6rem;
+      cursor: pointer;
+      &:hover {
+        filter: brightness(90%);
+      }
+    }
+  }
+  button:not(&__selected-order):after {
+    content: "";
+  }
+  &__selected-order:after {
+    content: "▾";
+  }
+  &__sort-by--asc &__selected-order:after {
+    content: "▴";
+  }
+  &__list {
+    display: grid;
+    gap: 1rem;
+  }
+}

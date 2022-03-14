@@ -1,0 +1,39 @@
+<section class="task-list">
+  <h4>Sort Tasks By</h4>
+  <div
+    [ngClass]="{
+      'task-list__sort-by': true,
+      'task-list__sort-by--asc': asc === true
+    }"
+  >
+    <button
+      (click)="handleSortBy('title')"
+      [ngClass]="{
+        'task-list__selected-order': sortBy === 'title'
+      }"
+    >
+      Title
+    </button>
+    <button
+      (click)="handleSortBy('priority')"
+      [ngClass]="{
+        'task-list__selected-order': sortBy === 'priority'
+      }"
+    >
+      Priority
+    </button>
+    <button
+      (click)="handleSortBy('status')"
+      [ngClass]="{
+        'task-list__selected-order': sortBy === 'status'
+      }"
+    >
+      Status
+    </button>
+  </div>
+  <div *ngIf="!tasks">Loading tasks...</div>
+  <div *ngIf="tasks && tasks.length === 0">No tasks found</div>
+  <div class="task-list__list">
+    <app-task *ngFor="let task of tasks" [task]="task"></app-task>
+  </div>
+</section>
