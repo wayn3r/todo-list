@@ -11,9 +11,10 @@ export class ListTasksService {
     const finder = new TaskFinder(respository);
     const tasks = await finder.run(q);
     if (sortBy) {
-      return tasks.sort((taskA: Task, taskB: Task) =>
-        taskA[sortBy] < taskB[sortBy] ? -1 : 1,
+      const sortedTaks = tasks.sort((taskA: Task, taskB: Task) =>
+        taskA[sortBy].value > taskB[sortBy].value ? -1 : 1,
       );
+      return sortedTaks;
     }
     return tasks;
   }
