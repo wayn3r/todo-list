@@ -1,0 +1,31 @@
+<section class="task-page">
+  <h2 class="task-page__title">Todo List</h2>
+  <div>
+    <button
+      *ngIf="!show"
+      class="task-page__toggle-button task-page__toggle-button--add"
+      (click)="handleToggleForm()"
+    >
+      Add task
+    </button>
+    <button
+      *ngIf="show"
+      class="task-page__toggle-button task-page__toggle-button--cancel"
+      (click)="handleToggleForm()"
+    >
+      Cancel
+    </button>
+  </div>
+  <div class="task-page__form" *ngIf="show">
+    <app-add-task-form (onAddTask)="handleAddTask($event)"></app-add-task-form>
+  </div>
+  <form
+    class="task-page__search"
+    [formGroup]="search"
+    (ngSubmit)="handleSearch()"
+  >
+    <input type="text" placeholder="Find a task..." formControlName="q" />
+    <button type="submit">Search</button>
+  </form>
+  <app-task-list [tasks]="tasks"></app-task-list>
+</section>
