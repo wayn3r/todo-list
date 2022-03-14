@@ -1,0 +1,93 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()" class="add-task-form">
+  <h3>Add a new task</h3>
+
+  <div *ngIf="errors" class="add-task-form__errors">
+    <ul>
+      <li *ngFor="let error of errors">
+        {{ error.message }}
+      </li>
+    </ul>
+  </div>
+  <label class="add-task-form__title">
+    Title
+    <input
+      type="text"
+      placeholder="Type a title..."
+      name="title"
+      formControlName="title"
+    />
+  </label>
+  <label class="add-task-form__description">
+    Description
+    <textarea
+      name="description"
+      placeholder="(Optional) Task description..."
+      formControlName="description"
+    ></textarea>
+  </label>
+  <div class="add-task-form__priority">
+    Priority
+    <div>
+      <label>
+        Low
+        <input
+          type="radio"
+          name="priority"
+          formControlName="priority"
+          value="low"
+        />
+      </label>
+      <label>
+        Medium
+        <input
+          type="radio"
+          name="priority"
+          formControlName="priority"
+          value="medium"
+        />
+      </label>
+      <label>
+        High
+        <input
+          type="radio"
+          name="priority"
+          formControlName="priority"
+          value="high"
+        />
+      </label>
+    </div>
+  </div>
+  <div class="add-task-form__status">
+    Status
+    <div>
+      <label>
+        Open
+        <input
+          type="radio"
+          name="status"
+          formControlName="status"
+          value="open"
+        />
+      </label>
+      <label>
+        In progress
+        <input
+          type="radio"
+          name="status"
+          formControlName="status"
+          value="in progress"
+        />
+      </label>
+      <label>
+        Completed
+        <input
+          type="radio"
+          name="status"
+          formControlName="status"
+          value="completed"
+        />
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="add-task-form__submit">Add task</button>
+</form>
