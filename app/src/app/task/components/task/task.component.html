@@ -1,0 +1,28 @@
+<div class="task">
+  <div class="task__title">
+    {{ task.title }}
+    <small>
+      {{ task.description }}
+    </small>
+  </div>
+  <div
+    [ngClass]="{
+      task__priority: true,
+      'task__priority--red': task.priority === 'high',
+      'task__priority--blue': task.priority === 'medium',
+      'task__priority--green': task.priority === 'low'
+    }"
+  >
+    {{ task.priority }}
+  </div>
+  <div
+    [ngClass]="{
+      task__status: true,
+      'task__status--red': task.status === 'open',
+      'task__status--blue': task.status === 'in progress',
+      'task__status--green': task.status === 'completed'
+    }"
+  >
+    {{ task.status }}
+  </div>
+</div>
