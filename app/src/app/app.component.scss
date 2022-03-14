@@ -1,0 +1,11 @@
+.app-container {
+  display: grid;
+  min-height: 100vh;
+  padding: 5rem 10vw;
+
+  &__content {
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0rem 0rem 5rem rgba(0, 0, 0, 0.1);
+  }
+}
