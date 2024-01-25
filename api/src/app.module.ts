@@ -6,7 +6,7 @@ import { TaskModule } from './task/module/task.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../..', 'app/dist/app'),
+      rootPath: join(__dirname, process.env.STATIC_PATH || '../../app/dist/app'),
     }),
     TaskModule],
   controllers: [],
