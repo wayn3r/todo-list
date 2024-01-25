@@ -8,12 +8,14 @@ jobs:
     steps:
       - name: Check Out Repo
         uses: actions/checkout@v2
-      - run: cd ./api
       - name: Install dependencies
+        working-directory: ./api
         run: npm install
       - name: Run tests
+        working-directory: ./api
         run: npm run test
       - name: Run E2E tests
+        working-directory: ./api
         run: npm run test:e2e
   build:
     runs-on: ubuntu-latest
@@ -52,6 +54,6 @@ jobs:
           git config --global user.name wayn3r
           sed -i "s-${{ github.actor }}.*-${{ github.actor }}/todo-list:${{ github.sha }}-g" todo-list/deployment.yaml
           git add todo-list/deployment.yaml
-          git commit -m "deploy(todo-list): update deployment with tag ${{ github.sha }}"
+          git commit -m "deploy(todo-list) update deployment with tag ${{ github.sha }}"
       - name: Publish changes
         run: git push origin master
