@@ -49,7 +49,7 @@ jobs:
           ref: master
           token: ${{ secrets.TOKEN }}
       - name: Setup Git Author config
-        run: /
+        run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
           sed -i "s-${{ github.actor }}.*-${{ github.actor }}/todo-list:${{ github.sha }}-g" todo-list/deployment.yaml
