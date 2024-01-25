@@ -52,7 +52,7 @@ jobs:
         run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
-          sed -i "s-${{ github.actor }}.*-${{ github.actor }}/todo-list:${{ github.sha }}-g" todo-list/deployment.yaml
+          sed -i "s_${{ github.actor }}.*_${{ github.actor }}/todo-list:${{ github.sha }}_g" todo-list/deployment.yaml
           git add todo-list/deployment.yaml
           git commit -m "deploy(todo-list) update deployment with tag ${{ github.sha }}"
       - name: Publish changes
