@@ -52,6 +52,6 @@ jobs:
           git config --global user.name wayn3r
           sed -i "s-${{ github.actor }}.*-${{ github.actor }}/todo-list:${{ github.sha }}-g" todo-list/deployment.yaml
           git add todo-list/deployment.yaml
-          git commit -m "deploy(todo-list): update deployment with tag ${{ github.sha }}"
+          git commit -m "deploy(todo-list) update deployment with tag ${{ github.sha }}"
       - name: Publish changes
         run: git push origin master
