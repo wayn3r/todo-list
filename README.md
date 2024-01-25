@@ -1,6 +1,6 @@
 # Todo List
 
-Todo list coding challenge
+Todo list simple app with NestJS and Angular
 
 ## Running the app
 
