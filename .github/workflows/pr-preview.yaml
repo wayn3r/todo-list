@@ -52,9 +52,9 @@ jobs:
         run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
-          cp todo-list-reviews/templates todo-list-reviews/${{ github.sha }}
-          sed -i "s_${{ github.actor }}/todo-list-preview.*_${{ github.actor }}/todo-list-preview:${{ github.sha }}_g" todo-list-reviews/${{ github.sha }}/deployment.yaml
-          git add todo-list-reviews/${{ github.sha }}
+          cp -r todo-list-previews/templates todo-list-previews/${{ github.sha }}
+          sed -i "s_${{ github.actor }}/todo-list-preview.*_${{ github.actor }}/todo-list-preview:${{ github.sha }}_g" todo-list-previews/${{ github.sha }}/deployment.yaml
+          git add todo-list-previews/${{ github.sha }}
           git commit -m "preview(todo-list) add preview deployment with tag ${{ github.sha }}"
       - name: Publish changes
         run: git push origin master
