@@ -1,0 +1,26 @@
+name: Clean Up Preview Application files
+on:
+  pull_request:
+    types: [closed]
+jobs:
+  cleanup:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: develop
+    steps:
+      - uses: actions/checkout@master
+        with:
+          repository: wayn3r/todo-list-argocd
+          ref: master
+          token: ${{ secrets.TOKEN }}
+      - name: Clean Up Review Application
+        run: |
+          git config --global user.email w9delacruz@gmail.com
+          git config --global user.name wayn3r
+          rm -rf todo-list-previews/${{ github.event.pull_request.head.sha }}
+          git add todo-list-previews/${{ github.event.pull_request.head.sha }}
+          git commit -m "clean(todo-list-preview) remove ${{ github.event.pull_request.head.sha }}"
+      - name: Publish changes
+        run: git push origin master
+  
