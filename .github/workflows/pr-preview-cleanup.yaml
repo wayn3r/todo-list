@@ -4,7 +4,6 @@ on:
     types: [closed]
 jobs:
   cleanup:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: develop
