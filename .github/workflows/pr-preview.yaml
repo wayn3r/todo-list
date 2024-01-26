@@ -1,7 +1,7 @@
 name: Build, Deploy & Preview
 on:
   pull_request:
-    types: [opened, reopened, edited]
+    types: [opened, reopened, synchronize]
 jobs:
   test:
     runs-on: ubuntu-latest
