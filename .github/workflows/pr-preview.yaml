@@ -36,7 +36,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-list-preview:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-list-preview:${{ github.head_ref }}
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -52,10 +52,10 @@ jobs:
         run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
-          cp -r todo-list-previews/templates todo-list-previews/${{ github.sha }}
-          sed -i "s_${{ github.actor }}/todo-list-preview.*_${{ github.actor }}/todo-list-preview:${{ github.sha }}_g" todo-list-previews/${{ github.sha }}/deployment.yaml
-          git add todo-list-previews/${{ github.sha }}
-          git commit -m "preview(todo-list) add preview deployment with tag ${{ github.sha }}"
+          cp -r todo-list-previews/templates todo-list-previews/${{ github.head_ref }}
+          sed -i "s_${{ github.actor }}/todo-list-preview.*_${{ github.actor }}/todo-list-preview:${{ github.head_ref }}_g" todo-list-previews/${{ github.head_ref }}/deployment.yaml
+          git add todo-list-previews/${{ github.head_ref }}
+          git commit -m "preview(todo-list) add preview deployment with tag ${{ github.head_ref }}"
       - name: Publish changes
         run: git push origin master
   add_preview_label:
