@@ -17,10 +17,9 @@ jobs:
         run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
-          export branch_slug=$(echo ${{ github.head_ref }} | sed 's./.-.')
-          rm -rf todo-list-previews/$branch_slug
-          git add todo-list-previews/$branch_slug
-          git commit -m "clean(todo-list-preview) remove $branch_slug"
+          rm -rf todo-list-previews/${{ github.event.number }}
+          git add todo-list-previews/${{ github.event.number }}
+          git commit -m "wipe(todo-list-preview) remove #${{ github.event.number }} ${{ github.head_ref }}"
       - name: Publish changes
         run: git push origin master
   
