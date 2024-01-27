@@ -52,9 +52,11 @@ jobs:
         run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
-          cp -r todo-list-previews/templates todo-list-previews/${{ github.event.pull_request.head.sha }}
-          sed -i "s_${{ github.actor }}/todo-list-preview.*_${{ github.actor }}/todo-list-preview:${{ github.event.pull_request.head.sha }}_g" todo-list-previews/${{ github.event.pull_request.head.sha }}/deployment.yaml
-          git add todo-list-previews/${{ github.event.pull_request.head.sha }}
+          export branch_slug=$(echo ${{ github.head_ref }} | sed 's./.-.')
+          mkdir -p todo-list-previews/$branch_slug
+          cp -r todo-list-previews/templates todo-list-previews/$branch_slug/${{ github.event.pull_request.head.sha }}
+          sed -i "s_${{ github.actor }}/todo-list-preview.*_${{ github.actor }}/todo-list-preview:${{ github.event.pull_request.head.sha }}_g" todo-list-previews/$branch_slug/${{ github.event.pull_request.head.sha }}/deployment.yaml
+          git add todo-list-previews/$branch_slug/${{ github.event.pull_request.head.sha }}
           git commit -m "preview(todo-list) add preview deployment with tag ${{ github.event.pull_request.head.sha }}"
       - name: Publish changes
         run: git push origin master
