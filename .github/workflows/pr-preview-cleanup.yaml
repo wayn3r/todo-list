@@ -13,13 +13,17 @@ jobs:
           repository: wayn3r/todo-list-argocd
           ref: master
           token: ${{ secrets.TOKEN }}
-      - name: Clean Up Review Application
+      - name: Clean Up Review Application && Publish changes
         run: |
           git config --global user.email w9delacruz@gmail.com
           git config --global user.name wayn3r
-          rm -rf todo-list-previews/${{ github.event.number }}
-          git add todo-list-previews/${{ github.event.number }}
-          git commit -m "wipe(todo-list-preview) remove #${{ github.event.number }} ${{ github.head_ref }}"
-      - name: Publish changes
-        run: git push origin master
+          if(rm -r todo-list-previews/${{ github.event.number }}); 
+          then 
+            git add todo-list-previews/${{ github.event.number }}
+            git commit -m "wipe(todo-list-preview) remove #${{ github.event.number }} ${{ github.head_ref }}"
+            git push origin master
+          else 
+            echo 'Pull request #${{ github.event.number }} had no preview deployments'; 
+          fi;
+
   
